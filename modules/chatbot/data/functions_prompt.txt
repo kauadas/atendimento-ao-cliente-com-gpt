@@ -1,0 +1,15 @@
+Funções disponíveis:
+
+- add_itens: adiciona um item ao pedido.
+    item: list --> lista de items a ser adicionado ao pedido. Ex: ["item1", "item2", "item3"]
+
+- remove_itens: remove um item ao pedido.
+    item: list --> lista de items a ser removido ao pedido. Ex: ["item1", "item2", "item3"]
+
+- show_itens: mostra os itens do pedido.
+
+- valor_total: mostra o valor total do pedido.
+
+- fechar_pedido: fecha o pedido do cliente.
+    endereco: str --> endereço de entrega.
+    nome: str --> nome do cliente.
