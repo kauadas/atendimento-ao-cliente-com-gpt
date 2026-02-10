@@ -1,7 +1,7 @@
 from g4f.client import Client
 from g4f.Provider import PollinationsAI
 
-from function_call import extract_json
+from .function_call import extract_json
 import json
 
 class Chatbot:
@@ -31,11 +31,13 @@ class Chatbot:
         """Obtem a resposta do chat com o nome fornecido."""
         if chat not in self.chats:
             raise Exception("Chat not found")
-        
-        response = self.client.chat.completions.create(
-            messages=self.chats[chat],
-            max_tokens=1024
-        ).choices[0].message.content
+        response = None
+
+        while not response:
+            response = self.client.chat.completions.create(
+                messages=self.chats[chat],
+                max_tokens=1024
+            ).choices[0].message.content
 
         if self.configs.get("function_call", True):
             response = self.function_call(response)
